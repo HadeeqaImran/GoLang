@@ -1,0 +1,188 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: rgba(127, 172, 255, 0.15) 1px 20px 50px;
+}
+
+
+.blue.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #4A35F2;
+    border-radius: 15px;
+    width: 300px;
+    height: 420px;
+}
+
+.right-box{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    width: 300px;
+    height: 420px;
+}
+
+.light-text{
+    color: #B1ADFF;
+}
+.result{
+    position: relative;
+    text-align: center;
+    top: 35;
+    font-weight: 700;
+    font-size: 1.2rem
+}
+
+.score{
+    top: 4%;
+    position: relative;
+    width:160px;
+    height: 160px;
+    margin: auto;
+    background-color: #4A35F2;
+    border-radius: 50%;
+    box-shadow:rgba(0, 0, 0, 0.21) 0px 40px 70px -10px inset;
+}
+
+.obtained-score{
+    position: relative;
+    color: white;
+    top: 25%;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 4.0rem;
+}
+
+.total-score{
+    font-size: 0.85rem;
+    position: relative;
+    left:38%;
+    top: 23%
+}
+
+.achievement{
+    position: relative;
+    color: white;
+    font-size: 1.7rem;
+    font-weight:600;
+    top: 2%;
+    text-align: center;
+}
+
+.comments{
+    position: relative;
+    font-size: 0.9rem;
+    width: 200px;
+    top: -1%;
+    margin: auto;
+    text-align: center
+}
+
+.summary-text{
+    display: flex;
+    justify-content: start;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-weight:700;
+    font-size: 1.3rem;
+}
+
+.summary-boxes{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    justify-content: space-around;
+    padding: 0 30px 0 30px;
+    margin-top: 1rem;
+}
+
+.borders{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.reaction{
+    background-color: rgba(248, 195, 186, 0.2);
+    color: rgba(248, 195, 186, 1);
+}
+
+.memory{
+    background-color: rgba(255, 238, 85, 0.2);
+    color:rgba(255, 238, 85, 1)
+}
+
+.verbal{
+    background-color: rgba(147, 222, 209, 0.2);
+    color: rgba(147, 222, 209, 1)
+}
+
+.visual{
+    background-color: rgba(74, 53, 242, 0.2);
+    color: rgba(74, 53, 242, 1)
+}
+
+i{
+ padding-right: 15px;
+}
+
+button{
+    border-radius: 20px;
+    width: 250px;
+    padding-block: 12px;
+    background-color: #2F3A58;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+}
+
+.skew-left{
+    margin-left: -3em;
+}
+
+.continue{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.7em;
+}
+
+.evaluation{
+    color: rgba(0, 0, 0, 0.5)
+}
+
+strong{
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 750;
+}
+
+@media (max-width: 720px){
+    .main{
+        flex-direction: column;
+    }
+}
