@@ -1,3 +1,6 @@
+# Task
+Make the design from Task1 responsive.
+
 # Desktop View
 ![image](https://github.com/HadeeqaImran/GoLang/assets/106611925/690e1a69-0107-483c-8222-3e47fcb69894)
 
