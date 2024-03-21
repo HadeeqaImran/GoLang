@@ -5,5 +5,6 @@
 ![_E__FE_task1_index html](https://github.com/HadeeqaImran/GoLang/assets/106611925/4c1581b5-2475-43f4-97e4-f326a27c4eb6)
 
 # Mobile View
-![Uploading _E__FE_task1_index.html.png…]()
+![_E__FE_task1_index html](https://github.com/HadeeqaImran/GoLang/assets/106611925/ad20baae-d876-4cd4-835a-3a9fee4a8225)
+
 
