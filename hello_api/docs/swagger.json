@@ -1,7 +1,6 @@
 {
     "swagger": "2.0",
     "info": {
-<<<<<<< HEAD
         "title": "Hello",
         "contact": {}
     },
@@ -40,9 +39,4 @@
             }
         }
     }
-=======
-        "contact": {}
-    },
-    "paths": {}
->>>>>>> 4155686cbbd496fb90937d120c6d3434044c3e00
 }

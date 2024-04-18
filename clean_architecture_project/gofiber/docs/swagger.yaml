@@ -1,6 +1,5 @@
 info:
   contact: {}
-  title: Hello
 paths:
   /hello/{name}:
     get:

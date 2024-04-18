@@ -4,10 +4,19 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/swagger"
 	"github.com/sixfwa/fiber-api/database"
 	"github.com/sixfwa/fiber-api/routes"
 )
 
+// @Summary Get a personalized greeting
+// @Description Get a personalized greeting based on the provided name
+// @ID get-greeting
+// @Param name path string true "Name for the greeting"
+// @Produce plain
+// @Success 200 {string} string "Hello {name}"
+// @Failure 400 {string} string "Bad Request"
+// @Router /hello/{name} [get]
 func welcome(c *fiber.Ctx) error {
 	return c.SendString("Welcom to my app")
 }
@@ -40,6 +49,8 @@ func main() {
 
 	app := fiber.New()
 
+	// Integrating Swagger for Using the APIs
+	app.Get("/swagger/*", swagger.HandlerDefault)
 	setupRoutes(app)
 
 	log.Fatal(app.Listen(":3000"))
