@@ -49,8 +49,11 @@ func main() {
 
 	app := fiber.New()
 
+	app.Static("/swagger", "./public")
+
 	// Integrating Swagger for Using the APIs
 	app.Get("/swagger/*", swagger.HandlerDefault)
+
 	setupRoutes(app)
 
 	log.Fatal(app.Listen(":3000"))
