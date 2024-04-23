@@ -19,10 +19,14 @@ You can have multiple workspaces, but each workspace has its own GOPATH
 
 
 For my system this command: "ls -l /Users/mac/go/bin/swag" gave this: "-rwxr-xr-x  1 mac  staff  14568960 Jan 23 23:14 /Users/mac/go/bin/swag"
-So I had to set my environment variables as follows:
-export GOPATH=$HOME
-export GOBIN=/Users/mac/go/bin
-export PATH=$PATH:$GOBIN
+So I had to set my environment variables as follows:  
+export GOPATH=$HOME 
+export GOBIN=/Users/mac/go/bin  
+export PATH=$PATH:$GOBIN  
+
+For windows you need to run: setx GOPATH "%USERPROFILE%\go"
+setx PATH "%PATH%;%GOPATH%\bin"
+
 <<<<<<< HEAD
 and this enabled me to run my swag init command
 
@@ -31,6 +35,3 @@ The code has sufficient comments
 
 #### Run your app
 go run main.go
-=======
-and this enabled me to run my swag init command
->>>>>>> 4155686cbbd496fb90937d120c6d3434044c3e00
