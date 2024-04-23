@@ -1,0 +1,27 @@
+info:
+  contact: {}
+  title: Hello
+paths:
+  /hello/{name}:
+    get:
+      description: Get a personalized greeting based on the provided name
+      operationId: get-greeting
+      parameters:
+      - description: Name for the greeting
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Hello {name}
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a personalized greeting
+swagger: "2.0"
