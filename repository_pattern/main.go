@@ -1,49 +1,39 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-// Different types of rocks: Ice, Sandy, Concrete
-/* Therefore the placeSafeties will be heavily dependent on the type of rock being climbed
-to decouple this dependency we make an interface of the placingSafties so that the climber
-depends upon behaviour of the SafetyPlacer and not on its implementation*/
+	_ "repo_pattern/docs"
 
-type SafetyPlacer interface {
-	placeSafeties()
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/swagger"
+)
+
+// @Summary Get a personalized greeting
+// @Description Get a personalized greeting based on the provided name
+// @ID get-greeting
+// @Param name path string true "Name for the greeting"
+// @Produce plain
+// @Success 200 {string} string "Hello {name}"
+// @Failure 400 {string} string "Bad Request"
+// @Router /hello/{name} [get]
+func hello(c *fiber.Ctx) error {
+	name := c.Params("name")
+	return c.SendString(fmt.Sprintf("Hello, %s", name))
 }
 
-type RockClimber struct {
-	rocksClimbed int
-	sp           SafetyPlacer
-}
-
-func NewRockClimber(sp SafetyPlacer) *RockClimber {
-	return &RockClimber{sp: sp}
-}
-
-func (rc *RockClimber) climbRock() {
-	rc.rocksClimbed++
-	if rc.rocksClimbed == 10 {
-		rc.sp.placeSafeties()
-	}
-}
-
-type IceSafetyPlacer struct {
-}
-
-type RockSafetyPlacer struct {
-}
-
-func (sp IceSafetyPlacer) placeSafeties() {
-	fmt.Printf("Placing my Ice safties!\n")
-}
-
-func (sp RockSafetyPlacer) placeSafeties() {
-	fmt.Printf("Placing my Rock safties!\n")
-}
-
+// @title Hello
 func main() {
-	rc := NewRockClimber(IceSafetyPlacer{})
-	for i := 0; i < 15; i++ {
-		rc.climbRock()
-	}
+	// Creating a fiber app
+	app := fiber.New()
+
+	// Creating the Http Handler
+	// :name here is a path parameter
+	app.Get("hello/:name", hello)
+
+	// Integrating Swagger for Using the API
+	app.Get("/swagger/*", swagger.HandlerDefault)
+
+	// Listen for Requests
+	app.Listen(":3000")
 }
