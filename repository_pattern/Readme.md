@@ -4,26 +4,26 @@
 Repository Pattern is to decouple the concerns of storing and accessing data.
 
 ## Project Structure
-repo_pattern/
-├── controllers/
-│   └── task.go   <!-- Handles all the HTTP requests. -->
-├── services/
-│   └── task.go   <!-- Intermediary between controllers and repsoitories. Handles all the business logic. -->
-├── repositories/
-│   └── task.go   <!-- Implements all the database interactions. -->
-├── database/
-│   └── database.go   <!-- Creates a database connection. (To improve with interfaces) -->
-├── models/
-│   └── task.go   <!-- Task entity structure. -->
-├── docs/   <!-- Swagger docs -->
-│   └── docs.go
-│   └── swagger.json
-│   └── swagger.yaml
-├── go.sum
-├── go.mod
-├── main.go
-├── Makefile   
-└── api.db
+repo_patter/  
+├── controllers/  
+│   └── task.go <span style="opacity: 0.5;">Handles all the HTTP requests.</span>      
+├── services/   
+│   └── task.go <span style="opacity: 0.5;">Intermediary between controllers and repsoitories. Handles all the business logic.</span>   
+├── repositories/  	
+│   └── task.go <span style="opacity: 0.5;">Implements all the database interactions.</span>	
+├── database/		
+│   └── database.go <span style="opacity: 0.5;">Creates a database connection. (To improve with interfaces)</span>		
+├── models/		
+│   └── task.go <span style="opacity: 0.5;">Task entity structure.</span>		
+├── docs/ <span style="opacity: 0.5;">Swagger docs</span>		
+│   └── docs.go		
+│	├── swagger.json		
+│   └── swagger.yaml		
+├── go.sum		
+├── go.mod		
+├── main.go		
+├── Makefile   		
+└── api.db		
 
 ## To Run Project
 On terminal enter command 
