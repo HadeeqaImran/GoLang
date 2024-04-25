@@ -7,16 +7,16 @@ Repository Pattern is to decouple the concerns of storing and accessing data.
 ```
 repo_pattern/
 ├── controllers/
-│   └── task.go   <!-- Handles all the HTTP requests. -->
+│   └── task.go   		<!-- Handles all the HTTP requests. -->
 ├── services/
-│   └── task.go   <!-- Intermediary between controllers and repositories. Handles all the business logic. -->
+│   └── task.go   		<!-- Intermediary between controllers and repositories. Handles all the business logic. -->
 ├── repositories/
-│   └── task.go   <!-- Implements all the database interactions. -->
+│   └── task.go   		<!-- Implements all the database interactions. -->
 ├── database/
-│   └── database.go   <!-- Creates a database connection. (To improve with interfaces) -->
+│   └── database.go   	<!-- Creates a database connection. (To improve with interfaces) -->
 ├── models/
-│   └── task.go   <!-- Task entity structure. -->
-├── docs/   <!-- Swagger docs -->
+│   └── task.go   		<!-- Task entity structure. -->
+├── docs/   			<!-- Swagger docs -->
 │   └── docs.go
 │   └── swagger.json
 │   └── swagger.yaml

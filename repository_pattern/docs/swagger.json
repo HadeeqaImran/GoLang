@@ -15,37 +15,185 @@
             },
             "post": {
                 "description": "Create a new task",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "tags": [
                     "Task"
                 ],
                 "summary": "Create a New Task",
-                "responses": {}
+                "parameters": [
+                    {
+                        "description": "Task object to be created",
+                        "name": "task",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.TaskRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Task"
+                        }
+                    }
+                }
             }
         },
         "/tasks/{id}": {
             "get": {
-                "description": "Get a task by ID",
+                "description": "Get a task by its ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "tags": [
                     "Task"
                 ],
-                "summary": "Get task by ID",
-                "responses": {}
+                "summary": "Get Task by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "uint64",
+                        "description": "Task ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Task"
+                        }
+                    }
+                }
             },
             "put": {
-                "description": "Update an existing task",
+                "description": "Update a task by its ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "tags": [
                     "Task"
                 ],
-                "summary": "Update an existing task",
-                "responses": {}
+                "summary": "Update Task by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "uint64",
+                        "description": "Task ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Updated Task object",
+                        "name": "task",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.TaskRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Task"
+                        }
+                    }
+                }
             },
             "delete": {
-                "description": "Delete a task by ID",
+                "description": "Delete a task by its ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "tags": [
                     "Task"
                 ],
-                "summary": "Delete a task",
-                "responses": {}
+                "summary": "Delete Task by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "uint64",
+                        "description": "Task ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controllers.TaskRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Status": {
+            "type": "string",
+            "enum": [
+                "todo",
+                "doing",
+                "done"
+            ],
+            "x-enum-varnames": [
+                "TODO",
+                "DOING",
+                "DONE"
+            ]
+        },
+        "models.Task": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "$ref": "#/definitions/models.Status"
+                },
+                "title": {
+                    "type": "string"
+                }
             }
         }
     }

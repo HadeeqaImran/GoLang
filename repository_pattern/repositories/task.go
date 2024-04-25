@@ -24,7 +24,7 @@ func (tr *TaskRepository) Create(task *models.Task) error {
 }
 
 func (tr *TaskRepository) Update(task *models.Task) error {
-	result := tr.db.Save(task)
+	result := tr.db.Model(&models.Task{}).Where("id = ?", task.ID).Updates(task)
 	if result.Error != nil {
 		return result.Error
 	}

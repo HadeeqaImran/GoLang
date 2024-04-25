@@ -1,3 +1,36 @@
+definitions:
+  controllers.TaskRequest:
+    properties:
+      description:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    type: object
+  models.Status:
+    enum:
+    - todo
+    - doing
+    - done
+    type: string
+    x-enum-varnames:
+    - TODO
+    - DOING
+    - DONE
+  models.Task:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      status:
+        $ref: '#/definitions/models.Status'
+      title:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
@@ -9,28 +42,92 @@ paths:
       tags:
       - Task
     post:
+      consumes:
+      - application/json
       description: Create a new task
-      responses: {}
+      parameters:
+      - description: Task object to be created
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.TaskRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Task'
       summary: Create a New Task
       tags:
       - Task
   /tasks/{id}:
     delete:
-      description: Delete a task by ID
-      responses: {}
-      summary: Delete a task
+      consumes:
+      - application/json
+      description: Delete a task by its ID
+      parameters:
+      - description: Task ID
+        format: uint64
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete Task by ID
       tags:
       - Task
     get:
-      description: Get a task by ID
-      responses: {}
-      summary: Get task by ID
+      consumes:
+      - application/json
+      description: Get a task by its ID
+      parameters:
+      - description: Task ID
+        format: uint64
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Task'
+      summary: Get Task by ID
       tags:
       - Task
     put:
-      description: Update an existing task
-      responses: {}
-      summary: Update an existing task
+      consumes:
+      - application/json
+      description: Update a task by its ID
+      parameters:
+      - description: Task ID
+        format: uint64
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Task object
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.TaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Task'
+      summary: Update Task by ID
       tags:
       - Task
 swagger: "2.0"
