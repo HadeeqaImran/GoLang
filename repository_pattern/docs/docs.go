@@ -15,37 +15,48 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/hello/{name}": {
+        "/tasks": {
             "get": {
-                "description": "Get a personalized greeting based on the provided name",
-                "produces": [
-                    "text/plain"
+                "description": "Get all tasks",
+                "tags": [
+                    "Task"
                 ],
-                "summary": "Get a personalized greeting",
-                "operationId": "get-greeting",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Name for the greeting",
-                        "name": "name",
-                        "in": "path",
-                        "required": true
-                    }
+                "summary": "Get all tasks",
+                "responses": {}
+            },
+            "post": {
+                "description": "Create a new task",
+                "tags": [
+                    "Task"
                 ],
-                "responses": {
-                    "200": {
-                        "description": "Hello {name}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
+                "summary": "Create a New Task",
+                "responses": {}
+            }
+        },
+        "/tasks/{id}": {
+            "get": {
+                "description": "Get a task by ID",
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task by ID",
+                "responses": {}
+            },
+            "put": {
+                "description": "Update an existing task",
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Update an existing task",
+                "responses": {}
+            },
+            "delete": {
+                "description": "Delete a task by ID",
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete a task",
+                "responses": {}
             }
         }
     }
@@ -57,7 +68,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "Hello",
+	Title:            "",
 	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

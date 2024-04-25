@@ -1,4 +1,8 @@
-.PHONY: generate run
+.DEFAULT_GOAL := all
+
+.PHONY: all generate run
+
+all: generate run
 
 generate:
 	swag init

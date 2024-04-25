@@ -1,27 +1,36 @@
 info:
   contact: {}
-  title: Hello
 paths:
-  /hello/{name}:
+  /tasks:
     get:
-      description: Get a personalized greeting based on the provided name
-      operationId: get-greeting
-      parameters:
-      - description: Name for the greeting
-        in: path
-        name: name
-        required: true
-        type: string
-      produces:
-      - text/plain
-      responses:
-        "200":
-          description: Hello {name}
-          schema:
-            type: string
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-      summary: Get a personalized greeting
+      description: Get all tasks
+      responses: {}
+      summary: Get all tasks
+      tags:
+      - Task
+    post:
+      description: Create a new task
+      responses: {}
+      summary: Create a New Task
+      tags:
+      - Task
+  /tasks/{id}:
+    delete:
+      description: Delete a task by ID
+      responses: {}
+      summary: Delete a task
+      tags:
+      - Task
+    get:
+      description: Get a task by ID
+      responses: {}
+      summary: Get task by ID
+      tags:
+      - Task
+    put:
+      description: Update an existing task
+      responses: {}
+      summary: Update an existing task
+      tags:
+      - Task
 swagger: "2.0"

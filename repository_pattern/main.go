@@ -1,39 +1,44 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
+	"repo_pattern/controllers"
+	"repo_pattern/database"
 	_ "repo_pattern/docs"
+	"repo_pattern/repositories"
+	"repo_pattern/services"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/swagger"
 )
 
-// @Summary Get a personalized greeting
-// @Description Get a personalized greeting based on the provided name
-// @ID get-greeting
-// @Param name path string true "Name for the greeting"
-// @Produce plain
-// @Success 200 {string} string "Hello {name}"
-// @Failure 400 {string} string "Bad Request"
-// @Router /hello/{name} [get]
-func hello(c *fiber.Ctx) error {
-	name := c.Params("name")
-	return c.SendString(fmt.Sprintf("Hello, %s", name))
+func setupRoutes(app *fiber.App, taskController *controllers.TaskController) {
+	// Routes for tasks
+	app.Post("/tasks", taskController.CreateTask)
+	app.Put("/tasks/:id", taskController.UpdateTask)
+	app.Delete("/tasks/:id", taskController.DeleteTask)
+	app.Get("/tasks", taskController.GetAllTasks)
+	app.Get("/tasks/:id", taskController.GetTaskById)
 }
 
-// @title Hello
 func main() {
-	// Creating a fiber app
-	app := fiber.New()
+	database.ConnectDb()
 
-	// Creating the Http Handler
-	// :name here is a path parameter
-	app.Get("hello/:name", hello)
+	// Initialize repository
+	taskRepo := repositories.NewTaskRepository(database.Database.Db)
+
+	// Initialize services
+	taskService := services.NewTaskService(taskRepo)
+
+	// Initialize controllers
+	taskController := controllers.NewTaskController(taskService)
+
+	app := fiber.New()
 
 	// Integrating Swagger for Using the API
 	app.Get("/swagger/*", swagger.HandlerDefault)
+	setupRoutes(app, taskController)
 
-	// Listen for Requests
-	app.Listen(":3000")
+	log.Fatal(app.Listen(":3000"))
 }
