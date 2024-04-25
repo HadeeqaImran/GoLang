@@ -3,6 +3,33 @@
 ### Intuition:
 Repository Pattern is to decouple the concerns of storing and accessing data.
 
+## Project Structure
+repo_patter/
+├── controllers/
+│   └── task.go <span style="opacity: 0.5;">Handles all the HTTP requests.</span>   
+├── services/
+│   └── task.go <span style="opacity: 0.5;">Intermediary between controllers and repsoitories. Handles all the business logic.</span>
+├── repositories/
+│   └── task.go <span style="opacity: 0.5;">Implements all the database interactions.</span>
+├── database/
+│   └── database.go <span style="opacity: 0.5;">Creates a database connection. (To improve with interfaces)</span>
+├── models/
+│   └── task.go <span style="opacity: 0.5;">Task entity structure.</span>
+├── docs/ <span style="opacity: 0.5;">Swagger docs</span>
+│   └── docs.go
+│	├── swagger.json
+│   └── swagger.yaml
+├── go.sum
+├── go.mod
+├── main.go
+├── Makefile   
+└── api.db
+
+## To Run Project
+On terminal enter command 
+```
+make
+```
 
 ## Resources:
 ### Repository Pattern:
@@ -11,7 +38,7 @@ https://youtu.be/ivJ2s0e7vi0?si=3TcossfW2ekJOOul
 https://youtu.be/UX4XjxWcDB4?si=-W7CUdIfJrhF85eM   
 
 Here is a detailed yet simple implementation of a dependency injection from the video tutorial:
-```
+```go
 package main
 
 import "fmt"
